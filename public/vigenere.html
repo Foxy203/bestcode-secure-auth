@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BestCode - Mã hóa Vigenère</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <i class="fa-solid fa-code"></i> BestCode
+        </div>
+        <p>Công cụ Tối ưu cho Bảo mật & Mã hóa</p>
+    </header>
+
+    <div class="main-container">
+
+        <!-- Left Sidebar -->
+        <aside class="sidebar-left">
+            <div class="section-title">Công cụ</div>
+            <nav class="sidebar-nav">
+                <a href="index.html">Trang chủ</a>
+                <a href="caesar.html">Mã hóa Caesar</a>
+                <a href="vigenere.html"><b>Mã hóa Vigenère</b></a>
+                <a href="hash.html">Hàm băm (Hash)</a>
+                <a href="#">PGP / GPG</a>
+            </nav>
+        </aside>
+
+        <!-- Center: Tool -->
+        <main class="form-section">
+            <div class="card-header">
+                <h2>Mã hóa Vigenère</h2>
+                <p>Mã hóa đa bảng sử dụng từ khóa.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="vigText">Văn bản:</label>
+                <textarea id="vigText" rows="4" placeholder="Nhập văn bản..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="vigKey">Từ khóa (Key):</label>
+                <input type="text" id="vigKey" placeholder="KEYWORD">
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button type="button" onclick="runVigenere(true)">Mã hóa</button>
+                <button type="button" onclick="runVigenere(false)"
+                    style="background: #444; border-color:#222; box-shadow:3px 3px 0 #222;">Giải mã</button>
+            </div>
+
+            <div class="form-group" style="margin-top: 20px;">
+                <label for="vigResult">Kết quả:</label>
+                <textarea id="vigResult" rows="4" readonly style="background: #f0f0f0;"></textarea>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="sidebar-right">
+            <div class="section-title">Thông tin thuật toán</div>
+            <div class="info-card">
+                <h3>Vigenère Cipher</h3>
+                <p>Sử dụng một loạt các mã Caesar xen kẽ dựa trên các chữ cái của một từ khóa. Đây là một dạng mã hóa
+                    thay thế đa bảng chữ cái.</p>
+                <p style="margin-top:10px; font-weight:bold;">Đặc điểm:</p>
+                <p>Chống lại phân tích tần suất đơn giản tốt hơn Caesar.</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="tools.js"></script>
+</body>
+
+</html>

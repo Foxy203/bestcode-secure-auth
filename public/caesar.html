@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BestCode - Mã hóa Caesar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <i class="fa-solid fa-code"></i> BestCode
+        </div>
+        <p>Công cụ Tối ưu cho Bảo mật & Mã hóa</p>
+    </header>
+
+    <div class="main-container">
+
+        <!-- Left Sidebar -->
+        <aside class="sidebar-left">
+            <div class="section-title">Công cụ</div>
+            <nav class="sidebar-nav">
+                <a href="index.html">Trang chủ</a>
+                <a href="caesar.html"><b>Mã hóa Caesar</b></a>
+                <a href="vigenere.html">Mã hóa Vigenère</a>
+                <a href="hash.html">Hàm băm (Hash)</a>
+                <a href="#">PGP / GPG</a>
+            </nav>
+        </aside>
+
+        <!-- Center: Tool -->
+        <main class="form-section">
+            <div class="card-header">
+                <h2>Mã hóa Caesar</h2>
+                <p>Dịch chuyển ký tự theo bảng chữ cái.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="caesarText">Văn bản cần xử lý:</label>
+                <textarea id="caesarText" rows="4" placeholder="Nhập văn bản..."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="caesarShift">Bước nhảy (Shift):</label>
+                <input type="number" id="caesarShift" value="3" style="width: 80px;">
+                <span style="font-size: 0.9rem; color: #666; margin-left: 10px;">(Số vị trí dịch chuyển)</span>
+            </div>
+
+            <div style="display: flex; gap: 10px;">
+                <button type="button" onclick="runCaesar(true)">Mã hóa</button>
+                <button type="button" onclick="runCaesar(false)"
+                    style="background: #444; border-color:#222; box-shadow:3px 3px 0 #222;">Giải mã</button>
+            </div>
+
+            <div class="form-group" style="margin-top: 20px;">
+                <label for="caesarResult">Kết quả:</label>
+                <textarea id="caesarResult" rows="4" readonly style="background: #f0f0f0;"></textarea>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="sidebar-right">
+            <div class="section-title">Thông tin thuật toán</div>
+            <div class="info-card">
+                <h3>Caesar Cipher</h3>
+                <p>Một trong những kỹ thuật mã hóa đơn giản nhất. Mỗi ký tự trong văn bản được thay thế bằng một ký tự
+                    cách nó một số vị trí cố định trong bảng chữ cái.</p>
+                <p style="margin-top:10px; font-weight:bold;">Công thức:</p>
+                <p>E(x) = (x + n) mod 26</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="tools.js"></script>
+</body>
+
+</html>

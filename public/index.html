@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BestCode - Công cụ Bảo mật & Mã hóa</title>
+    <!-- FontAwesome for icons (kept for minimal use) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <i class="fa-solid fa-code"></i> BestCode
+        </div>
+        <p>Công cụ Tối ưu cho Bảo mật & Mã hóa</p>
+    </header>
+
+    <div class="main-container">
+
+        <!-- Left Sidebar: Navigation -->
+        <aside class="sidebar-left">
+            <div class="section-title">Công cụ</div>
+            <nav class="sidebar-nav">
+                <a href="index.html"><b>Trang chủ</b></a>
+                <a href="caesar.html">Mã hóa Caesar</a>
+                <a href="vigenere.html">Mã hóa Vigenère</a>
+                <a href="hash.html">Hàm băm (Hash)</a>
+                <a href="#">PGP / GPG</a>
+                <a href="#">Steganography</a>
+                <a href="#">Web Tools</a>
+            </nav>
+            <br>
+            <div class="section-title">Hỗ trợ</div>
+            <nav class="sidebar-nav">
+                <a href="https://www.facebook.com/HaiQuyThatTha24092003?locale=vi_VN" target="_blank">
+                    <i class="fa-brands fa-facebook"></i> Liên hệ (Facebook)
+                </a>
+                <a href="#">Về chúng tôi</a>
+            </nav>
+            <div style="margin-top: 15px; font-size: 0.9rem; font-style: italic; color: #666;">
+                <p>Nhóm sinh viên Chuyên ngành an ninh mạng Trường Đại Học công nghệ thành phố hồ chí minh (HUTECH)</p>
+            </div>
+        </aside>
+
+        <!-- Center: Main Tool -->
+        <main class="form-section">
+            <div class="card-header">
+                <h2>Tham gia Tương Lai</h2>
+                <p>Xác thực an toàn, được tái thiết kế.</p>
+            </div>
+
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="name">Họ và Tên</label>
+                    <input type="text" id="name" placeholder="Nguyễn Văn A">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Địa chỉ Email</label>
+                    <input type="email" id="email" placeholder="email@congty.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <div style="position: relative;">
+                        <input type="password" id="password" placeholder="Gợi ý mật khẩu">
+                        <i class="fa-regular fa-eye toggle-password" id="togglePassword"
+                            style="position: absolute; right: 10px; top: 10px; cursor: pointer;"></i>
+                    </div>
+                    <button type="button" id="generatePassphrase"
+                        style="margin-top: 10px; background: #666; font-size: 0.9rem;">⚡ Tạo Mật khẩu An toàn</button>
+                </div>
+
+                <div class="strength-section">
+                    <div class="meter-label-row">
+                        <span id="strengthLabel">Độ mạnh: Không</span>
+                        <span id="crackTime" class="crack-time">--</span>
+                    </div>
+                    <div class="segmented-meter" id="segmentedMeter">
+                        <div class="segment" data-index="0"></div>
+                        <div class="segment" data-index="1"></div>
+                        <div class="segment" data-index="2"></div>
+                        <div class="segment" data-index="3"></div>
+                    </div>
+                    <p id="feedback" class="feedback-text"></p>
+                </div>
+
+                <button type="submit" id="submitBtn" disabled>
+                    Tạo Tài khoản
+                </button>
+
+                <div id="apiMessage" class="api-message" style="display:none;"></div>
+            </form>
+        </main>
+
+        <!-- Right Sidebar: Insights -->
+        <aside class="sidebar-right">
+            <div class="section-title">Thông tin bảo mật</div>
+
+            <div class="info-card">
+                <h3>NIST SP 800-63B</h3>
+                <p>Mức tuân thủ: AAL2. Trọng tâm: Độ dài > Độ phức tạp. Kết quả: Giảm mệt mỏi cho người dùng & tránh tái
+                    sử dụng mẫu.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Entropy Tổ Hợp</h3>
+                <p>So sánh: 8 ký tự (Phức tạp) ≈ 30 bit entropy. 4 từ (Cụm từ) ≈ 80 bit entropy. Thời gian bẻ khóa tăng
+                    theo cấp số nhân (2^n).</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Mã hoá Argon2id</h3>
+                <p>Tham số: m=64MB, t=3, p=1. Kháng: GPU/ASIC. Chi phí tấn công: >$10k/ngày cho brute-force.</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <div id="successModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>Tài khoản đã được bảo mật!</h2>
+            <p>Mã hoá đã hoàn thành.</p>
+            <button id="goToLogin" style="margin-top:1rem;">Đi tới Đăng nhập</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

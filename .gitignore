@@ -1,0 +1,13 @@
+node_modules/
+.env
+.DS_Store
+dist/
+coverage/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dataset_paths.json
+*.pyc
+__pycache__/
+# Keep the generated blacklist, it is useful data
+# src/data/blacklist.json 

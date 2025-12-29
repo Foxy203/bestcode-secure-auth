@@ -1,0 +1,281 @@
+/* Retro dCode Style */
+:root {
+    --bg-color: #F8F4E3;
+    /* Beige/Parchment */
+    --text-color: #333333;
+    --heading-color: #cc0000;
+    /* dCode dark red */
+    --link-color: #cc0000;
+    --border-color: #ddd;
+    --card-bg: #FFFFFF;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --border-dark: #888;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-size: 18px;
+    /* Scaled up */
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Header */
+.main-header {
+    background: #e8e4c9;
+    /* Slightly darker beige */
+    padding: 1rem 0;
+    text-align: center;
+    border-bottom: 2px solid #d4d0b0;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #444;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.logo i {
+    color: #cc0000;
+}
+
+/* Layout */
+.main-container {
+    display: grid;
+    grid-template-columns: 240px 1fr 280px;
+    /* Wider spacing */
+    max-width: 1400px;
+    /* Wider layout */
+    margin: 0 auto;
+    gap: 25px;
+    padding: 0 1.5rem;
+}
+
+@media (max-width: 900px) {
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Sidebar */
+aside h3,
+.section-title {
+    color: #cc0000;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 8px 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.sidebar-nav a:hover {
+    background: #eae6d1;
+    padding-left: 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 3D Block Effect for Columns */
+.sidebar-left,
+.sidebar-right,
+.form-section {
+    background: var(--card-bg);
+    padding: 2rem;
+    border: 1px solid var(--border-dark);
+    box-shadow: 5px 5px 0px var(--shadow-color);
+    /* Retro 3D Shadow */
+    border-radius: 4px;
+}
+
+.card-header h2 {
+    color: var(--heading-color);
+    font-size: 2rem;
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #444;
+    font-family: Arial, sans-serif;
+    /* Readable label */
+    font-size: 1rem;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #aaa;
+    font-family: 'Courier New', Courier, monospace;
+    /* Retro feel */
+    font-size: 1.1rem;
+    background: #fdfdfd;
+    transition: all 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #cc0000;
+    outline: none;
+    box-shadow: 3px 3px 0px rgba(204, 0, 0, 0.2);
+}
+
+button {
+    background: #cc0000;
+    color: white;
+    border: 2px solid #990000;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    box-shadow: 3px 3px 0px #990000;
+    transition: all 0.1s;
+}
+
+button:hover {
+    background: #e60000;
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0px #990000;
+}
+
+button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0px #990000;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Strength Meter */
+.strength-section {
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.segmented-meter {
+    display: flex;
+    gap: 5px;
+    height: 15px;
+    margin-top: 5px;
+}
+
+.segment {
+    flex: 1;
+    background: #eee;
+    border: 1px solid #ccc;
+}
+
+.segment.active {
+    border-color: #000;
+}
+
+.feedback-text {
+    font-style: italic;
+    color: #cc0000;
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
+
+/* Info Cards (Right Sidebar) */
+.info-card {
+    background: #fff;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 1rem;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.05);
+    /* Subtle inner shadow */
+}
+
+.info-card h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    color: #333;
+    border-bottom: none;
+}
+
+.icon-box {
+    display: none;
+    /* Hide icons for retro text-only look */
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 2rem;
+    border: 2px solid #444;
+    max-width: 400px;
+    text-align: center;
+}
+
+.api-message {
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid;
+}
+
+.api-message.success {
+    background: #e6fffa;
+    border-color: #38b2ac;
+    color: #234e52;
+}
+
+.api-message.error {
+    background: #fff5f5;
+    border-color: #fc8181;
+    color: #9b2c2c;
+}

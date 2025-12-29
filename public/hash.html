@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BestCode - Hàm băm (Hash)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+
+<body>
+
+    <header class="main-header">
+        <div class="logo">
+            <i class="fa-solid fa-code"></i> BestCode
+        </div>
+        <p>Công cụ Tối ưu cho Bảo mật & Mã hóa</p>
+    </header>
+
+    <div class="main-container">
+
+        <!-- Left Sidebar -->
+        <aside class="sidebar-left">
+            <div class="section-title">Công cụ</div>
+            <nav class="sidebar-nav">
+                <a href="index.html">Trang chủ</a>
+                <a href="caesar.html">Mã hóa Caesar</a>
+                <a href="vigenere.html">Mã hóa Vigenère</a>
+                <a href="hash.html"><b>Hàm băm (Hash)</b></a>
+                <a href="#">PGP / GPG</a>
+            </nav>
+        </aside>
+
+        <!-- Center: Tool -->
+        <main class="form-section">
+            <div class="card-header">
+                <h2>Hàm băm (Hash)</h2>
+                <p>Tạo chuỗi đại diện (Digest) không thể đảo ngược.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="hashInput">Văn bản đầu vào:</label>
+                <textarea id="hashInput" rows="3" placeholder="Nhập văn bản..."></textarea>
+            </div>
+
+            <button type="button" onclick="runHash()">Tính toán Hash</button>
+
+            <div style="margin-top: 25px;">
+                <div class="form-group">
+                    <label>MD5:</label>
+                    <input type="text" id="md5Output" readonly style="background: #f0f0f0; font-size: 0.9rem;">
+                </div>
+                <div class="form-group">
+                    <label>SHA-1:</label>
+                    <input type="text" id="sha1Output" readonly style="background: #f0f0f0; font-size: 0.9rem;">
+                </div>
+                <div class="form-group">
+                    <label>SHA-256:</label>
+                    <input type="text" id="sha256Output" readonly style="background: #f0f0f0; font-size: 0.9rem;">
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar -->
+        <aside class="sidebar-right">
+            <div class="section-title">Thông tin thuật toán</div>
+            <div class="info-card">
+                <h3>Hash Functions</h3>
+                <p>Hàm băm chuyển đổi dữ liệu đầu vào có độ dài bất kỳ thành chuỗi ký tự có độ dài cố định. Đây là quá
+                    trình một chiều.</p>
+                <p style="margin-top:10px;">Lưu ý: MD5 và SHA-1 hiện được coi là không an toàn cho mục đích mật mã học
+                    (như chữ ký số).</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="tools.js"></script>
+</body>
+
+</html>
