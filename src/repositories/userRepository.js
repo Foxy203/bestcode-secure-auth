@@ -27,8 +27,23 @@ class UserRepository {
                     createdAt: new Date()
                 };
                 this.users.set(userData.email, user);
+
+                // DEMO LOGGING: Show stored data
+                console.log('\n=============================================');
+                console.log('>>> [DEMO DATABASE] NEW USER STORED:');
+                console.log('>>> Email:', user.email);
+                console.log('>>> Hashed Password:', user.password);
+                console.log('=============================================\n');
+
                 resolve(user);
             }, 100);
+        });
+    }
+    async findAll() {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve(Array.from(this.users.values()));
+            }, 50);
         });
     }
 }

@@ -112,11 +112,58 @@ document.addEventListener('DOMContentLoaded', () => {
             strengthLabel.style.color = color;
         }
 
-        if (crackTimeDisplay) crackTimeDisplay.innerText = result.crack_times_display.offline_slow_hashing_1e4_per_second;
+        if (crackTimeDisplay) {
+            let timeText = result.crack_times_display.offline_slow_hashing_1e4_per_second;
+            // Translate time units
+            const timeMap = {
+                "less than a second": "ngay lập tức",
+                "second": "giây",
+                "seconds": "giây",
+                "minute": "phút",
+                "minutes": "phút",
+                "hour": "giờ",
+                "hours": "giờ",
+                "day": "ngày",
+                "days": "ngày",
+                "month": "tháng",
+                "months": "tháng",
+                "year": "năm",
+                "years": "năm",
+                "centuries": "thế kỷ"
+            };
+
+            // Simple replace for known units
+            Object.keys(timeMap).forEach(key => {
+                timeText = timeText.replace(new RegExp(`\\b${key}\\b`, 'g'), timeMap[key]);
+            });
+
+            crackTimeDisplay.innerText = timeText;
+        }
 
         if (feedbackDisplay) {
             if (result.feedback.warning) {
-                feedbackDisplay.innerText = `⚠️ ${result.feedback.warning}`;
+                const warningMap = {
+                    "This is similar to a commonly used password": "Mật khẩu này tương tự một mật khẩu phổ biến",
+                    "This is a top-10 common password": "Đây là một trong 10 mật khẩu phổ biến nhất",
+                    "This is a top-100 common password": "Đây là một trong 100 mật khẩu phổ biến nhất",
+                    "This is a very common password": "Mật khẩu này rất phổ biến",
+                    "Straight rows of keys are easy to guess": "Các phím thẳng hàng rất dễ đoán",
+                    "Short keyboard patterns are easy to guess": "Các mẫu phím ngắn rất dễ đoán",
+                    "Use a longer keyboard pattern with more turns": "Hãy dùng mẫu phím dài hơn và đổi hướng nhiều hơn",
+                    "Repeats like \"aaa\" are easy to guess": "Ký tự lặp lại như \"aaa\" rất dễ đoán",
+                    "Repeats like \"abcabcabc\" are only slightly harder to guess than \"abc\"": "Lặp lại chuỗi như \"abcabcabc\" cũng dễ đoán",
+                    "Sequences like abc or 6543 are easy to guess": "Chuỗi liên tiếp như abc hay 6543 rất dễ đoán",
+                    "Recent years are easy to guess": "Các năm gần đây rất dễ đoán",
+                    "Dates are often easy to guess": "Ngày tháng thường rất dễ đoán",
+                    "Names and surnames by themselves are easy to guess": "Tên riêng rất dễ đoán",
+                    "Common names and surnames are easy to guess": "Tên phổ biến rất dễ đoán",
+                    "Capitalization doesn't help very much": "Viết hoa không giúp ích nhiều lắm",
+                    "All-uppercase is almost as easy to guess as all-lowercase": "Viết hoa toàn bộ cũng dễ đoán như viết thường",
+                    "Reverse words are not much harder to guess": "Từ viết ngược cũng không khó đoán hơn",
+                    "Predictable substitutions like '@' instead of 'a' don't help very much": "Thay thế ký tự kiểu '@' cho 'a' không giúp ích nhiều"
+                };
+                const msg = result.feedback.warning;
+                feedbackDisplay.innerText = `⚠️ ${warningMap[msg] || msg}`;
             } else if (score < 3) {
                 // Provide suggestions for stronger passwords
                 const suggestions = [

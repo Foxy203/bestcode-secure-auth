@@ -3,9 +3,20 @@ const authService = require('../services/authService');
 class AuthController {
     async register(req, res) {
         try {
-            const { email, password, name } = req.body; // Added optional 'name' for userInputs
+            const { email, password, name } = req.body;
+
+            // Input Validation
             if (!email || !password) {
                 return res.status(400).json({ error: 'Email và mật khẩu là bắt buộc' });
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                return res.status(400).json({ error: 'Email không hợp lệ' });
+            }
+
+            if (password.length < 8) {
+                return res.status(400).json({ error: 'Mật khẩu phải có ít nhất 8 ký tự' });
             }
 
             // Pass name/email as userInputs for context-aware check

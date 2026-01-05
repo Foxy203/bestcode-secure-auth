@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Auth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            background: #27ae60;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            vertical-align: middle;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f1f3f5;
+            font-weight: 600;
+        }
+
+        .hash {
+            font-family: 'Fira Code', monospace;
+            color: #e74c3c;
+            font-size: 0.85rem;
+            word-break: break-all;
+        }
+
+        .email {
+            font-weight: 500;
+            color: #2980b9;
+        }
+
+        .note {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            color: #856404;
+        }
+
+        .refresh-btn {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .refresh-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>
+
+            <span class="badge">SECURE</span>
+        </h1>
+        <p>Trang này mô phỏng giao diện của Quản trị viên Database (DBA). Dữ liệu dưới đây được lấy trực tiếp từ hệ
+            thống.</p>
+
+        <div class="note">
+            <strong>Chú ý:</strong> Mật khẩu của người dùng KHÔNG bao giờ được lưu dưới dạng văn bản (plain text).
+            Hệ thống sử dụng thuật toán <strong>Argon2</strong> để mã hóa (băm) mật khẩu trước khi lưu.
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th width="30%">Email Người dùng</th>
+                    <th width="70%">Mật khẩu lưu trong Database (Hash Code)</th>
+                </tr>
+            </thead>
+            <tbody id="userTable">
+                <tr>
+                    <td colspan="2" style="text-align: center;">Đang tải dữ liệu...</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="refresh-btn" onclick="loadUsers()">🔄 Tải lại dữ liệu</button>
+        <a href="/" style="margin-left: 15px; text-decoration: none; color: #7f8c8d;">← Quay lại Trang chủ</a>
+    </div>
+
+    <script src="proof.js"></script>
+</body>
+
+</html>

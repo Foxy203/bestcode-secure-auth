@@ -40,11 +40,20 @@ function incrementAttempt(key) {
 
     entry.count += 1;
 
+
+
     // Check Tiers
-    const tier = TIERS.find(t => t.threshold === entry.count);
+    // Find exact match OR get the highest tier if we exceeded all thresholds
+    let tier = TIERS.find(t => t.threshold === entry.count);
+
+    // If no exact match, but count > max threshold, use the last tier (Permanent/Long lock)
+    if (!tier && entry.count > TIERS[TIERS.length - 1].threshold) {
+        tier = TIERS[TIERS.length - 1];
+    }
+
     if (tier) {
         entry.blockedUntil = Date.now() + (tier.waitSeconds * 1000);
-        entry.tier = tier.threshold; // Track which tier was triggered
+        entry.tier = tier.threshold;
     }
 
     loginAttempts[key] = entry;
